@@ -382,7 +382,6 @@ public class ExpenseService {
             }
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
             long monthId = monthOpt.get().getMonthId();
-            
 
             List<MescItem> mescL = mescRepo.findByMonth_MonthId(monthId);
             for(MescItem i:mescL){
