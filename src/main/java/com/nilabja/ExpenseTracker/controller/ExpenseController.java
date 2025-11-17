@@ -2,6 +2,7 @@
 
     import com.nilabja.ExpenseTracker.model.*;
     import com.nilabja.ExpenseTracker.service.ExpenseService;
+    import org.apache.catalina.User;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +50,20 @@ http://localhost:8080/deleteItem/{item}/{id}
 
 
  */
+
+
+
+
+        @PostMapping("/addUser")
+        public void addUser(@RequestBody Users user){
+            service.addUser(user);
+        }
+
+        @PostMapping("/loginUser/{userName}/{password}")
+        public boolean addUser(@PathVariable String userName,@PathVariable String password){
+            return service.loginUser(userName,password);
+        }
+
 
 
         //For food service

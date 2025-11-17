@@ -25,6 +25,8 @@ public class ExpenseService {
     TravelRepo travelRepo;
     @Autowired
     YearRepo yearRepo;
+    @Autowired
+    UserRepo userRepo;
 
     public void addFood(FoodItem food, String monthValue, int year) {
 
@@ -392,5 +394,13 @@ public class ExpenseService {
 
         return sum;
 
+    }
+
+    public void addUser(Users user) {
+      userRepo.save(user);
+    }
+
+    public boolean loginUser(String userName, String password) {
+        return userRepo.existsByUserName(userName) && userRepo.existsByUserPassword(password);
     }
 }
