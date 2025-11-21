@@ -278,7 +278,7 @@ public class ExpenseService {
         }
     }
 
-    public List<FoodItem> getAllFoodByMonthAndYear(String month, int year) {
+    public List<FoodItem> getAllFoodByMonthAndYear(String month, int year,String user) {
         Optional<Year> yearOpt = yearRepo.findByYear(year);
         long yearId = -1;
         if (yearOpt.isPresent()) {
@@ -288,12 +288,13 @@ public class ExpenseService {
         Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
         long monthId = monthOpt.get().getMonthId();
 
-        List<FoodItem> foodL = foodRepo.findByMonth_MonthId(monthId);
+        List<FoodItem> foodL = foodRepo.findByMonth_MonthIdAndUser(monthId,user);
+        System.out.println(foodL);
 
         return foodL;
     }
 
-    public List<MescItem> getAllMescByMonthAndYear(String month, int year) {
+    public List<MescItem> getAllMescByMonthAndYear(String month, int year ,String user) {
         Optional<Year> yearOpt = yearRepo.findByYear(year);
         long yearId = -1;
         if (yearOpt.isPresent()) {
@@ -302,11 +303,11 @@ public class ExpenseService {
 
         Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
         long monthId = monthOpt.get().getMonthId();
-        List<MescItem> mescL = mescRepo.findByMonth_MonthId(monthId);
+        List<MescItem> mescL = mescRepo.findByMonth_MonthIdAndUser(monthId,user);
         return mescL;
     }
 
-    public List<StuffItem> getAllStuffByMonthAndYear(String month, int year) {
+    public List<StuffItem> getAllStuffByMonthAndYear(String month, int year ,String user) {
         Optional<Year> yearOpt = yearRepo.findByYear(year);
         long yearId = -1;
         if (yearOpt.isPresent()) {
@@ -315,11 +316,11 @@ public class ExpenseService {
 
         Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
         long monthId = monthOpt.get().getMonthId();
-        List<StuffItem> stuffL = stuffRepo.findByMonth_MonthId(monthId);
+        List<StuffItem> stuffL = stuffRepo.findByMonth_MonthIdAndUser(monthId,user);
         return stuffL;
     }
 
-    public List<TravelItem> getAllTravelByMonthAndYear(String month, int year) {
+    public List<TravelItem> getAllTravelByMonthAndYear(String month, int year ,String user) {
         Optional<Year> yearOpt = yearRepo.findByYear(year);
         long yearId = -1;
         if (yearOpt.isPresent()) {
@@ -328,7 +329,7 @@ public class ExpenseService {
 
         Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
         long monthId = monthOpt.get().getMonthId();
-        List<TravelItem> travelL = travelRepo.findByMonth_MonthId(monthId);
+        List<TravelItem> travelL = travelRepo.findByMonth_MonthIdAndUser(monthId,user);
         return travelL;
     }
 
@@ -406,5 +407,6 @@ public class ExpenseService {
 
     public boolean existingUser(String userName) {
         return userRepo.existsByUserName(userName);
+
     }
 }

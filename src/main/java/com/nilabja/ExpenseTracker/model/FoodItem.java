@@ -15,10 +15,23 @@ public class FoodItem implements ExpenseItem{
     @ManyToOne
     @JoinColumn(name = "month_id")
     private Month month;
+
+    @Column(name="user_id")
+    private String user;
     private String itemName;
     private double itemCost;
+
+
+
     final private String category="food";
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public Month getMonth() {
         return month;

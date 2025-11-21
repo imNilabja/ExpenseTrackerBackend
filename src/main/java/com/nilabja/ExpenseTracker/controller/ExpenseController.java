@@ -10,8 +10,8 @@
 
 
     @RestController
-//    @CrossOrigin(origins = "http://localhost:5173")
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "http://localhost:5173")
+    //@CrossOrigin(origins = "*")
 
 
     public class ExpenseController {
@@ -88,10 +88,10 @@ http://localhost:8080/deleteItem/{item}/{id}
             return service.getAllFood();
         }
 
-        @GetMapping("/getFoodByYear/{month}/{year}")
-        public List<FoodItem> getFoodByMandY(@PathVariable String month,@PathVariable int year) {
+        @GetMapping("/getFoodByYear/{month}/{year}/{user}")
+        public List<FoodItem> getFoodByMandY(@PathVariable String month,@PathVariable int year,@PathVariable String user) {
 
-            return service.getAllFoodByMonthAndYear(month,year);
+            return service.getAllFoodByMonthAndYear(month,year,user);
         }
 
         //for Mesc service
@@ -108,10 +108,10 @@ http://localhost:8080/deleteItem/{item}/{id}
             return "Mesc added!!!";
         }
 
-        @GetMapping("/getMescByYear/{month}/{year}")
-        public List<MescItem> getMescByMandY(@PathVariable String month,@PathVariable int year) {
+        @GetMapping("/getMescByYear/{month}/{year}/{user}")
+        public List<MescItem> getMescByMandY(@PathVariable String month,@PathVariable int year,@PathVariable String user) {
 
-            return service.getAllMescByMonthAndYear(month,year);
+            return service.getAllMescByMonthAndYear(month,year,user);
         }
 
         //for Stuff service
@@ -127,10 +127,10 @@ http://localhost:8080/deleteItem/{item}/{id}
             return "Stuff added!!!";
         }
 
-        @GetMapping("/getStuffByYear/{month}/{year}")
-        public List<StuffItem> getStuffByMandY(@PathVariable String month,@PathVariable int year) {
+        @GetMapping("/getStuffByYear/{month}/{year}/{user}")
+        public List<StuffItem> getStuffByMandY(@PathVariable String month,@PathVariable int year,@PathVariable String user) {
 
-            return service.getAllStuffByMonthAndYear(month,year);
+            return service.getAllStuffByMonthAndYear(month,year,user);
         }
         //for Travel service
 
@@ -139,10 +139,10 @@ http://localhost:8080/deleteItem/{item}/{id}
             return service.getAllTravel();
         }
 
-        @GetMapping("/getTravelByYear/{month}/{year}")
-        public List<TravelItem> getTravelByMandY(@PathVariable String month,@PathVariable int year) {
+        @GetMapping("/getTravelByYear/{month}/{year}/{user}")
+        public List<TravelItem> getTravelByMandY(@PathVariable String month,@PathVariable int year,@PathVariable String user) {
 
-            return service.getAllTravelByMonthAndYear(month,year);
+            return service.getAllTravelByMonthAndYear(month,year,user);
         }
 
 

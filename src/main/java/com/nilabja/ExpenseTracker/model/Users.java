@@ -1,14 +1,19 @@
 package com.nilabja.ExpenseTracker.model;
 
-
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user_table")
 public class Users {
+
     @Id
+    @Column(name = "user_name")   // PK column in DB
     private String userName;
+
+    @Column(name = "user_email")  // matches DB column
     private String userEmail;
+
+    @Column(name = "user_password")  // matches DB column
     private String userPassword;
 
     public String getUserPassword() {

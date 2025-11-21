@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface FoodItemRepo extends JpaRepository<FoodItem,Long> {
     List<FoodItem> findByMonth_MonthId(Long monthId);
+    List<FoodItem> findByMonth_MonthIdAndUser(Long monthId,String userName);
+
 
 }

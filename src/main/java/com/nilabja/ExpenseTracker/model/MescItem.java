@@ -9,9 +9,20 @@ public class MescItem implements ExpenseItem{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long mesc_id;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     @ManyToOne
     @JoinColumn(name = "month_id")
     private Month month;
+    @Column(name="user_id")
+    private String user;
     private String itemName;
     private double itemCost;
     final private String category="mesc";

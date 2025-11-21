@@ -12,6 +12,17 @@ public class StuffItem implements ExpenseItem {
     @ManyToOne
     @JoinColumn(name = "month_id")
     private Month month;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    @Column(name="user_id")
+    private String user;
     private String itemName;
     private double itemCost;
     final private String category="stuff";
