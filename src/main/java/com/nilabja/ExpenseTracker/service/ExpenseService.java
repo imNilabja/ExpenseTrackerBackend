@@ -403,4 +403,8 @@ public class ExpenseService {
     public boolean loginUser(String userName, String password) {
         return userRepo.existsByUserName(userName) && userRepo.existsByUserPassword(password);
     }
+
+    public boolean existingUser(String userName) {
+        return userRepo.existsByUserName(userName);
+    }
 }

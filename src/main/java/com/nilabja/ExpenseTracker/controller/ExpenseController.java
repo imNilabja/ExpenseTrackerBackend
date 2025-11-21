@@ -64,6 +64,14 @@ http://localhost:8080/deleteItem/{item}/{id}
             return service.loginUser(userName,password);
         }
 
+        @PostMapping("/existingUser/{userName}")
+        public boolean addUser(@PathVariable String userName){
+            return service.existingUser(userName);
+        }
+
+
+
+
 
 
         //For food service
