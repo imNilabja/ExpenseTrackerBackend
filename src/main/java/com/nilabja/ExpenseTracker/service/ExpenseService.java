@@ -334,7 +334,7 @@ public class ExpenseService {
     }
 
 
-    public double getSum(String category, String month, int year) {
+    public double getSum(String category, String month, int year,String user) {
         double sum=0;
 
         if(category.equals("travel")){
@@ -345,7 +345,7 @@ public class ExpenseService {
             }
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
             long monthId = monthOpt.get().getMonthId();
-            List<TravelItem> travelL = travelRepo.findByMonth_MonthId(monthId);
+            List<TravelItem> travelL = travelRepo.findByMonth_MonthIdAndUser(monthId,user);
             for(TravelItem i:travelL){
                 sum+=i.getItemCost();
             }
@@ -358,7 +358,7 @@ public class ExpenseService {
             }
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
             long monthId = monthOpt.get().getMonthId();
-            List<StuffItem> stuffL = stuffRepo.findByMonth_MonthId(monthId);
+            List<StuffItem> stuffL = stuffRepo.findByMonth_MonthIdAndUser(monthId,user);
             for(StuffItem i:stuffL){
                 sum+=i.getItemCost();
             }
@@ -372,7 +372,7 @@ public class ExpenseService {
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
             long monthId = monthOpt.get().getMonthId();
 
-            List<FoodItem> foodL = foodRepo.findByMonth_MonthId(monthId);
+            List<FoodItem> foodL = foodRepo.findByMonth_MonthIdAndUser(monthId,user);
             for(FoodItem i:foodL){
                 sum+=i.getItemCost();
             }
@@ -386,7 +386,7 @@ public class ExpenseService {
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
             long monthId = monthOpt.get().getMonthId();
 
-            List<MescItem> mescL = mescRepo.findByMonth_MonthId(monthId);
+            List<MescItem> mescL = mescRepo.findByMonth_MonthIdAndUser(monthId,user);
             for(MescItem i:mescL){
                 sum+=i.getItemCost();
             }

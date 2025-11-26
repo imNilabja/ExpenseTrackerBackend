@@ -176,9 +176,9 @@ http://localhost:8080/deleteItem/{item}/{id}
             return "deleted!!!";
         }
 
-        @GetMapping("/ItemSum/{category}/{month}/{year}")
-        public double getSum(@PathVariable String category,@PathVariable String month,@PathVariable int year){
-           return service.getSum(category,month,year);
+        @GetMapping("/ItemSum/{category}/{month}/{year}/{user}")
+        public double getSum(@PathVariable String category,@PathVariable String month,@PathVariable int year,@PathVariable String user){
+           return service.getSum(category,month,year,user);
 
         }
     }
