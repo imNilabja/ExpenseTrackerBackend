@@ -6,12 +6,14 @@
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.web.bind.annotation.*;
 
-    import java.util.List;
+    import java.util.*;
 
 
     @RestController
-    @CrossOrigin(origins = "http://localhost:5173")
     //@CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://localhost:8081")
+
 
 
     public class ExpenseController {
@@ -52,7 +54,13 @@ http://localhost:8080/deleteItem/{item}/{id}
  */
 
 
+      @GetMapping("/test")
+      public boolean test(){
+          System.out.printf("in test!!!");
+          return true;
+      }
 
+// add user
 
         @PostMapping("/addUser")
         public void addUser(@RequestBody Users user){
@@ -174,7 +182,7 @@ http://localhost:8080/deleteItem/{item}/{id}
 
         public String updateItem(@RequestBody ExpenseDTO expItem,@PathVariable String item,@PathVariable long id){
             service.updateItem(expItem,item,id);
-            return "deleted!!!";
+            return "updated!!!";
         }
 
         @GetMapping("/ItemSum/{category}/{month}/{year}/{user}")
