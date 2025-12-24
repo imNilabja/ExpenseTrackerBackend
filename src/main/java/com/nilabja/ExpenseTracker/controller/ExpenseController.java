@@ -11,8 +11,8 @@
 
     @RestController
     //@CrossOrigin(origins = "*")
-//    @CrossOrigin(origins = "http://localhost:5173")
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:5173")
+   // @CrossOrigin(origins = "http://localhost:8081")
 
 
 
@@ -101,7 +101,6 @@ http://localhost:8080/deleteItem/{item}/{id}
 
             return service.getAllFoodByMonthAndYear(month,year,user);
         }
-
 
         //for Mesc service
 

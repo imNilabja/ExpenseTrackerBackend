@@ -117,6 +117,7 @@ public class ExpenseService {
 
 
     public void addStuff(StuffItem stuff, String monthValue, int year) {
+
         Optional<Year> yearOpt = yearRepo.findByYear(year);
         long id = -1;
         if (yearOpt.isPresent()) {
