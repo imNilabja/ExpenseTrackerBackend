@@ -67,9 +67,14 @@ http://localhost:8080/deleteItem/{item}/{id}
             service.addUser(user);
         }
 
-        @PostMapping("/loginUser/{userName}/{password}")
-        public boolean addUser(@PathVariable String userName,@PathVariable String password){
-            return service.loginUser(userName,password);
+//        @PostMapping("/loginUser/{userName}/{password}")
+//        public boolean addUser(@PathVariable String userName,@PathVariable String password){
+//            return service.loginUser(userName,password);
+//        }
+
+        @PostMapping("/loginUser")
+        public boolean addUser(@RequestBody LoginUserDTO user){
+            return service.loginUser(user.getUserName(),user.getPassword());
         }
 
         @PostMapping("/existingUser/{userName}")
