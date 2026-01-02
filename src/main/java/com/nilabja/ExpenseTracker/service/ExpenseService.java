@@ -284,10 +284,12 @@ public class ExpenseService {
         long yearId = -1;
         if (yearOpt.isPresent()) {
             yearId = yearOpt.get().getYear_id();
+            System.out.println("yearID: "+yearId);
         }
 
         Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
         long monthId = monthOpt.get().getMonthId();
+        System.out.println("monthID: "+monthId);
 
         List<FoodItem> foodL = foodRepo.findByMonth_MonthIdAndUser(monthId,user);
         System.out.println(foodL);
