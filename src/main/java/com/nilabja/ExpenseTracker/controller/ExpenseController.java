@@ -11,8 +11,8 @@
 
     @RestController
     //@CrossOrigin(origins = "*")
-//    @CrossOrigin(origins = "http://localhost:5173")
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:5173")
+   // @CrossOrigin(origins = "http://localhost:8081")
 
 
 
@@ -67,9 +67,14 @@ http://localhost:8080/deleteItem/{item}/{id}
             service.addUser(user);
         }
 
-        @PostMapping("/loginUser/{userName}/{password}")
-        public boolean addUser(@PathVariable String userName,@PathVariable String password){
-            return service.loginUser(userName,password);
+//        @PostMapping("/loginUser/{userName}/{password}")
+//        public boolean addUser(@PathVariable String userName,@PathVariable String password){
+//            return service.loginUser(userName,password);
+//        }
+
+        @PostMapping("/loginUser")
+        public boolean addUser(@RequestBody LoginUserDTO user){
+            return service.loginUser(user.getUserName(),user.getPassword());
         }
 
         @PostMapping("/existingUser/{userName}")
@@ -101,7 +106,6 @@ http://localhost:8080/deleteItem/{item}/{id}
 
             return service.getAllFoodByMonthAndYear(month,year,user);
         }
-
 
         //for Mesc service
 
