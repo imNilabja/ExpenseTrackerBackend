@@ -283,6 +283,7 @@ public class ExpenseService {
         long yearId = -1;
         if (yearOpt.isPresent()) {
             yearId = yearOpt.get().getYear_id();
+
         }
 
         Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
@@ -339,12 +340,17 @@ public class ExpenseService {
 
         if(category.equals("travel")){
             Optional<Year> yearOpt = yearRepo.findByYear(year);
+            if (yearOpt.isEmpty()) {
+                return 0;
+            }
             long yearId = -1;
             if (yearOpt.isPresent()) {
                 yearId = yearOpt.get().getYear_id();
             }
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
+            if (monthOpt.isEmpty()) return 0;
             long monthId = monthOpt.get().getMonthId();
+
             List<TravelItem> travelL = travelRepo.findByMonth_MonthIdAndUser(monthId,user);
             for(TravelItem i:travelL){
                 sum+=i.getItemCost();
@@ -352,12 +358,17 @@ public class ExpenseService {
 
         }else  if(category.equals("stuff")){
             Optional<Year> yearOpt = yearRepo.findByYear(year);
+            if (yearOpt.isEmpty()) {
+                return 0;
+            }
             long yearId = -1;
             if (yearOpt.isPresent()) {
                 yearId = yearOpt.get().getYear_id();
             }
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
+            if (monthOpt.isEmpty()) return 0;
             long monthId = monthOpt.get().getMonthId();
+
             List<StuffItem> stuffL = stuffRepo.findByMonth_MonthIdAndUser(monthId,user);
             for(StuffItem i:stuffL){
                 sum+=i.getItemCost();
@@ -365,11 +376,15 @@ public class ExpenseService {
 
         }else  if(category.equals("food")){
             Optional<Year> yearOpt = yearRepo.findByYear(year);
+            if (yearOpt.isEmpty()) {
+                return 0;
+            }
             long yearId = -1;
             if (yearOpt.isPresent()) {
                 yearId = yearOpt.get().getYear_id();
             }
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
+            if (monthOpt.isEmpty()) return 0;
             long monthId = monthOpt.get().getMonthId();
 
             List<FoodItem> foodL = foodRepo.findByMonth_MonthIdAndUser(monthId,user);
@@ -379,11 +394,15 @@ public class ExpenseService {
 
         }else  if(category.equals("mesc")){
             Optional<Year> yearOpt = yearRepo.findByYear(year);
+            if (yearOpt.isEmpty()) {
+                return 0;
+            }
             long yearId = -1;
             if (yearOpt.isPresent()) {
                 yearId = yearOpt.get().getYear_id();
             }
             Optional<Month> monthOpt = monthRepo.findByMonthAndYearId(month, yearId);
+            if (monthOpt.isEmpty()) return 0;
             long monthId = monthOpt.get().getMonthId();
 
             List<MescItem> mescL = mescRepo.findByMonth_MonthIdAndUser(monthId,user);
